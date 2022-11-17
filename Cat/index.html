@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{catIsOpen: false}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les chats</title>
+    <style>
+        .menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: #fff;
+          display: grid;
+          place-content: center;
+        }
+        .header__catBtn {
+          position: relative;
+          z-index: 10;
+        }
+      </style>
 </head>
 <body>
-    <nav>
-        <h4>menu</h4>
+    <button aria-controls="catNav" @click="catIsOpen= ! catIsOpen" class="header__catBtn"> Menu</button>
+    
+    <nav id="catNav" x-show="catIsOpen" x-transition.duration.800ms class="cat">
         <ul>
             <li><a href="cat/index.html">Les chats</a>
                 <ul>
-                    <li><a href="cat/Chat-1.html">chat 1</a></li>
-                    <li><a href="cat/Chat-2.html">chat 2</a></li>
+                    <li><a href="cat/Chat-1.html">Chat 1</a></li>
+                    <li><a href="cat/Chat-2.html">Chat 2</a></li>
                 </ul>
             </li>
             <li><a href="Dog/index.html">Les chiens</a></li> 
                 <ul>
                     <li><a href="dog/Dog-1.html">Chien 1</a></li>
-                    <li><a href="dog/Dog-2.html">Chien 2</a></li>
+                        <li><a href="dog/Dog-2.html">Chien 2</a></li>
                 </ul>
+            </li>
         </ul>
     </nav>
+    
+    <button x-data="{LoremIsOpen: false}">
+        <div aria-controls="LoremNav" @click="LoremIsOpen= ! LoremIsOpen" class="header__LoremBtn"> <dt>Lorem.</dt></div>
+      <nav id="LoremNav" x-show="LoremIsOpen" class="Lorem"><dl>
+        <dd>Lorem ipsum dolor sit amet.</dd>
+      </dl>
+    </boutton>
 
     <article>
         <a href="Cat/Chat-1.html">
